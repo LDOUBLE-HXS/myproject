@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.customer.CustomerMapper">
+	<!-- 登陆 -->
+	<select id="login" resultMap="customerList">
+		SELECT *,m.`id` m_id,b.`id` b_id
+		FROM customer c INNER JOIN member m
+		ON c.`userMemberId`=m.`id`
+		LEFT JOIN
+		bank b ON c.`id`=b.`userId`
+		WHERE userCode=#{userCode} AND
+		userPassword=#{userPassword}
+	</select>
+	<resultMap type="Customer" id="customerList">
+		<id property="id" column="id" /><!-- BUG必加id，否则集合只有一行数据 -->
+		<association property="bank" resultMap="bankList" />
+		<association property="member" resultMap="memberList" />
+	</resultMap>
+	<resultMap type="Member" id="memberList">
+		<id property="id" column="m_id" />
+		<result property="memberType" column="memberType" />
+		<result property="discount" column="discount" />
+		<result property="createdBy" column="createdBy" />
+		<result property="creationDate" column="creationDate" />
+		<result property="modifyBy" column="modifyBy" />
+		<result property="modifyDate" column="modifyDate" />
+	</resultMap>
+	<resultMap type="Bank" id="bankList">
+		<id property="id" column="b_id" />
+		<result property="userId" column="userId" />
+		<result property="bankName" column="bankName" />
+		<result property="bankCard" column="bankCard" />
+		<result property="balance" column="balance" />
+	</resultMap>
+	<!-- 注册 -->
+	<insert id="register" parameterType="Customer">
+		INSERT INTO
+		customer(userCode,userName,userPassword,userPhone,userCard,creationDate,userMemberId,integral)
+		VALUES(#{userCode},#{userName},#{userPassword},#{userPhone},#{userCard},NOW(),1,0)
+	</insert>
+	<!-- 校验登录名 -->
+	<select id="userCodeAjax" resultType="int">
+		select count(*) from
+		customer where userCode=#{userCode}
+	</select>
+	<!-- 修改个人信息 -->
+	<update id="modifyPersonalMessage" parameterType="Customer">
+		UPDATE customer
+		SET
+		userCode=#{userCode},userPhone=#{userPhone},modifyDate=NOW()
+		WHERE
+		id=#{id}
+	</update>
+	<!-- 修改密码 -->
+	<update id="modifyPassword" parameterType="Customer">
+		UPDATE customer SET
+		userPassword=#{userPassword} WHERE id=#{id}
+	</update>
+	<!-- 积分更改 -->
+	<update id="modifyIntegral" parameterType="Customer">
+		UPDATE customer SET
+		`integral`=#{integral} where id=#{id}
+	</update>
+	<!-- 更改会员等级 -->
+	<update id="modifyMemberName_ByCustomerId" parameterType="int">
+		UPDATE customer SET
+		`userMemberId`=#{userMemberId} where id=#{id}
+	</update>
+	<!-- 查询所有用户 -->
+	<select id="selAllCustomerPage" parameterType="Map" resultMap="customerList">
+		SELECT *,m.`id` m_id,b.`id` b_id FROM customer c INNER JOIN member m
+		ON c.`userMemberId`=m.`id`
+		LEFT JOIN bank b ON c.`id`=b.`userId`
+		<where>
+			<if test="userName!=null and userName!=''">
+				and c.userName like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="userMemberId!=null and userMemberId!=''">
+				and c.userMemberId = #{userMemberId}
+			</if>
+		</where>
+		order by c.creationDate DESC limit #{currentPageNo},#{pageSize}
+	</select>
+	<!-- 得到用户总数据 -->
+	<select id="getCustomerCount" resultType="int">
+		SELECT COUNT(*) FROM customer
+		<where>
+			<if test="userName!=null and userName!=''">
+				and userName like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="userMemberId!=null and userMemberId!=''">
+				AND userMemberId=#{userMemberId}
+			</if>
+		</where>
+	</select>
+	<!-- 管理员添加会员 -->
+	<insert id="addCustomer" parameterType="Customer">
+		INSERT INTO
+		customer(`userCode`,`userName`,`userPassword`,`userPhone`,`userCard`,`creationDate`,`modifyBy`,`modifyDate`,`userMemberId`,`integral`)
+		VALUES(#{userCode},#{userName},'123456',#{userPhone},#{userCard},NOW(),#{modifyBy},NOW(),#{userMemberId},#{integral})
+	</insert>
+	<!-- 管理员通过id查询用户 -->
+	<select id="selCustomerById" parameterType="int" resultMap="customerList">
+		SELECT *,m.`id` m_id,b.`id` b_id
+		FROM customer c INNER JOIN member m
+		ON c.`userMemberId`=m.`id`
+		LEFT JOIN
+		bank b ON c.`id`=b.`userId`
+		WHERE c.`id`=#{id}
+	</select>
+	<!-- 管理员通过id修改用户 -->
+	<update id="modifyCustomerById" parameterType="Customer">
+		UPDATE customer SET userCode=#{userCode},userName=#{userName},userPhone=#{userPhone},userCard=#{userCard},modifyBy=#{modifyBy},modifyDate=NOW(),userMemberId=#{userMemberId},integral=#{integral} WHERE id=#{id}
+	</update>
+	<!-- 管理员通过id删除用户 -->
+	<delete id="deleteCustomerById" parameterType="int">
+		delete from customer where id=#{id}
+	</delete>
+	<!-- 退单回扣账号积分 -->
+	<update id="delIntegral" parameterType="int">
+		update from customer set integral=#{integral} where id=#{customerId}
+	</update>
+	<!-- 通过用户账号查询id -->
+	<select id="selCustomer_ByUserCode" resultMap="customerList">
+		SELECT *,m.`id` m_id,b.`id` b_id
+		FROM customer c INNER JOIN member m
+		ON c.`userMemberId`=m.`id`
+		LEFT JOIN
+		bank b ON c.`id`=b.`userId`
+		WHERE userCode=#{userCode}
+	</select>
+</mapper>
+    

@@ -1,0 +1,3238 @@
+<style media="screen" data-href="http://www.sppeninsula.com/static/css/reset.css?v=v3">
+@charset "utf-8";
+article,
+
+aside,
+
+details,
+
+figcaption,
+
+figure,
+
+footer,
+
+header,
+
+hgroup,
+
+main,
+
+nav,
+
+section,
+
+summary {
+
+    display: block;
+
+}
+
+audio,
+
+canvas,
+
+video {
+
+    display: inline-block;
+
+}
+
+audio:not([controls]) {
+
+    display: none;
+
+    height: 0;
+
+}
+
+/*Base*/
+
+ 
+
+html, body{
+
+    font: 12px/22px "微软雅黑","\5b8b\4f53",Arial,sans-serif;
+
+}
+
+html {
+
+    color: #666;
+
+    -ms-text-size-adjust: 100%; 
+
+    -webkit-text-size-adjust: 100%; /*修正手持设备字体变化*/
+
+}
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+a {
+
+    text-decoration: none;
+
+    background: transparent; /*修正win8系统IE连接灰色背景*/
+
+    outline:none;
+
+}
+
+a:focus {
+
+    outline: 0;
+
+}
+
+a:active,
+
+a:hover {
+
+    outline: 0;
+
+}
+
+img {
+
+    border: 0;
+
+    vertical-align: middle;
+
+    -ms-interpolation-mode:bicubic;
+
+    transition: transform 1s;
+
+}
+
+img.hover{
+
+    transform: scale(1.15);
+
+}
+
+fieldset {
+
+    border: 1px solid #c0c0c0;
+
+    margin: 0 2px;
+
+    padding: 0.35em 0.625em 0.75em;
+
+}
+
+/*legend*/
+
+button,
+
+input,
+
+select,
+
+textarea {
+
+    font-family: inherit; 
+
+    font-size: 100%; 
+
+    margin: 0;
+
+    outline:none;
+
+}
+
+button,
+
+input {
+
+    line-height: normal;
+
+}
+
+button,
+
+select {
+
+    text-transform: none;
+
+}
+
+button,
+
+html input[type="button"], 
+
+input[type="reset"],
+
+input[type="submit"] {
+
+    -webkit-appearance: button; 
+
+    cursor: pointer; 
+
+}
+
+
+
+button[disabled],
+
+html input[disabled] {
+
+    cursor: default;
+
+}
+
+input[type="checkbox"],
+
+input[type="radio"] {
+
+    box-sizing: border-box; 
+
+    padding: 0; 
+
+}
+
+input[type="search"] {
+
+    -webkit-appearance: textfield; 
+
+    -moz-box-sizing: content-box;
+
+    -webkit-box-sizing: content-box; 
+
+    box-sizing: content-box;
+
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+
+input[type="search"]::-webkit-search-decoration {
+
+    -webkit-appearance: none;
+
+}
+
+button::-moz-focus-inner,
+
+input::-moz-focus-inner {
+
+    border: 0;
+
+    padding: 0;
+
+}
+
+input.submit {
+
+    cursor: pointer;
+
+}
+
+input.radio {
+
+    width: 13px;
+
+    height: 13px;
+
+}
+
+input[type="text"],
+
+input[type="number"]{
+
+    -webkit-appearance: none;
+
+}
+
+textarea {
+
+    overflow: auto; 
+
+    vertical-align: top;
+
+    resize: none;
+
+    -webkit-appearance: none;
+
+}
+
+table {
+
+    border-collapse: collapse;
+
+    border-spacing: 0;
+
+}
+
+ul,
+
+ol,
+
+li { 
+
+    list-style: none;
+
+    float: left;
+
+}
+
+i, em{
+
+    font-style: normal;
+
+}
+
+/*清除浮动*/
+
+.clear {
+
+    clear: both;
+
+}
+
+.f-cb{
+
+    zoom: 1;
+
+}
+
+.f-cb:after{
+
+    display:block;
+
+    height:0;
+
+    clear:both;
+
+    visibility:hidden;
+
+    overflow:hidden;
+
+    content:".";
+
+}
+
+.fl {
+
+    float:left;
+
+    display: inline;
+
+}
+
+.fr {
+
+    float:right;
+
+    display: inline;
+
+}
+
+.por{
+
+    position: relative;
+
+}
+
+.poa{
+
+    position: absolute;
+
+}
+
+.poa-f{
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+.pos-f{
+
+    position: fixed;
+
+}
+
+.ovh{
+
+    overflow: hidden;
+
+}
+
+.noselect{
+
+    -moz-user-select: none;
+
+    -webkit-user-select: none;
+
+    -ms-user-select: none;
+
+}
+
+.z1{
+
+    z-index: 1;
+
+}
+
+.z2{
+
+    z-index: 2;
+
+}
+
+.dn{
+
+    display: none;
+
+}
+
+.w-f{
+
+    width: 100%;
+
+}
+
+.h-f{
+
+    height: 100%;
+
+}
+
+.fwn{
+
+    font-weight: normal;
+
+}
+
+.t-f{
+
+    transition: all 0.5s;
+
+}
+
+.t-c{
+
+    transition: color 0.5s;
+
+}
+
+.t-bg{
+
+    transition: background 0.5s;
+
+}</style>
+<style media="" data-href="http://www.sppeninsula.com/static/web/js/mydate/skin/WdatePicker.css">.Wdate {
+
+	border: #999 1px solid;
+
+	height: 20px;
+
+	background: #fff url("http://www.sppeninsula.com/static/web/js/mydate/skin/datePicker.gif") no-repeat right;
+
+}
+
+
+
+.Wdate::-ms-clear {
+
+	display: none;
+
+}
+
+
+
+.WdateFmtErr {
+
+	font-weight: bold;
+
+	color: red;
+
+}</style><style media="screen" data-href="http://www.sppeninsula.com/static/web/css/font/iconfont.css?v=v3">
+@font-face {font-family: "iconfont";
+  src: url("http://www.sppeninsula.com/static/web/css/font/iconfont.eot"); /* IE9*/
+  src: url("http://www.sppeninsula.com/static/web/css/font/iconfont.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */
+  url("http://www.sppeninsula.com/static/web/css/font/iconfont.woff") format('woff'), /* chrome、firefox */
+  url("http://www.sppeninsula.com/static/web/css/font/iconfont.ttf") format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("http://www.sppeninsula.com/static/web/css/font/iconfont.svg#iconfont") format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-rili:before { content: "\e602"; }
+.icon-bbgrili:before { content: "\e600"; }
+.icon-kongjian3:before { content: "\e601"; }
+.icon-right:before { content: "\e603"; }
+.icon-qq:before { content: "\e607"; }
+.icon-weixin:before { content: "\e60c"; }
+.icon-weibo:before { content: "\e608"; }
+</style><style media="screen" data-href="http://www.sppeninsula.com/static/web/css/style.css?v=v3">/* 宁波半岛酒店 */
+
+/* 公共样式 S */
+
+ul,ol{
+
+	float: none;
+
+}
+
+.pull-left{
+
+	float: left;
+
+}
+
+.pull-right{
+
+	float: right;
+
+}
+
+.text-left{
+
+	text-align: left;
+
+}
+
+.text-right{
+
+	text-align: right;
+
+}
+
+.text-center{
+
+	text-align: center;
+
+}
+
+.c-yel{
+
+	color: #a99269;
+
+}
+
+.error {
+
+    border: 1px solid #D70128 !important;
+
+}
+
+.leftbar{
+
+	position: fixed;
+
+	z-index: 1001;
+
+	top: 0;
+
+	left: 0;
+
+	float: left;
+
+	width: 19%;
+
+	min-width: 200px;
+
+	height: 680px;
+
+	font-family: "宋体","SimSun","\5b8b\4f53";
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg"); 
+
+	background-repeat: repeat-y;
+
+	background-position: center;
+
+}
+
+.rightbar{
+
+	float: right;
+
+	width: 81%;
+
+	min-width: 1000px;
+
+	font-family: "宋体","SimSun","\5b8b\4f53";
+
+}
+
+/* 公共样式 E */
+
+
+
+/* left.php  S */
+
+.left-logo a{
+
+	display: block;
+
+	width: 92px;
+
+	height: 92px;
+
+	margin: 20px auto 20px;
+
+}
+
+.leftbar li{
+
+	float: none;
+
+	height: 52px;
+
+	line-height: 52px;
+
+	border-top: 1px solid #e2dbd0;
+
+}
+
+.leftbar li a{
+
+	display: block;
+
+	width: 100%;
+
+	height: 100%;
+
+	*height: 51px;
+
+	text-align: center;
+
+	font-size: 15px;
+
+	color: #a99269;
+
+	background-repeat: no-repeat;
+
+	background-position: center -100%;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+}
+
+.leftbar li.left-li1 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/aboutus.png");
+
+}
+
+.leftbar li.left-li2 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/room.png");
+
+}
+
+.leftbar li.left-li3 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/meeting.png");
+
+}
+
+.leftbar li.left-li4 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/hotelDining.png");
+
+}
+
+.leftbar li.left-li5 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/leisure.png");
+
+}
+
+.leftbar li.left-li6 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/newsCenter.png");
+
+}
+
+.leftbar li.left-li7 a{
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/contact.png");
+
+}
+
+.leftbar li.cur a,
+
+.leftbar li:hover a{
+
+	background-color: #ae9975;
+
+	background-position: center center;
+
+}
+
+.leftbar li.last-child:hover{
+
+	background-color: #917d5b;
+
+}
+
+.leftbar li.cur span,
+
+.leftbar li:hover span{
+
+	display: none;
+
+}
+
+.leftbar li.last-child{
+
+	border-bottom: 1px solid #e2dbd0;
+
+	text-align: center;
+
+	font-size: 16px;
+
+	font-weight: 700;
+
+	color: #fff;
+
+	background-color: #ae9975;
+
+	cursor: pointer;
+
+}
+
+.leftbar li.last-child i{
+
+	padding-right: 10px;
+
+	font-size: 20px;
+
+	font-weight: 100;
+
+}
+
+.left-social{
+
+	position: absolute;
+
+	bottom: 140px;
+
+}
+
+.left-social div{
+
+	margin-top: 40px;
+
+	text-align: center;
+
+}
+
+.left-social div i{
+
+	font-size: 34px;
+
+	color: #dddddd;
+
+}
+
+.left-social div i:hover{
+
+	color: #a99269;
+
+}
+
+.left-social p{
+
+	padding-top: 6px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	font-size: 12px;
+
+	text-align: center;
+
+	color: #a99269;
+
+}
+
+.left-social p span{
+
+	padding: 0 3px;
+
+}
+
+.left-social p a{
+
+	color: #a99269;
+
+	padding: 0 3px;
+
+}
+
+/* left.php  E */
+
+/* welcome.php  S */
+
+.banner{
+
+	position: relative;
+
+	z-index: 1000;
+
+}
+
+.welc-banner li{
+
+	display: none;
+
+}
+
+.welc-banner li img{
+
+	display: block;
+
+	width: 100%;
+
+	height: auto;
+
+}
+
+.welc-title{
+
+	position: absolute;
+
+	top: 60px;
+
+	left: 116px;
+
+}
+
+.content{
+
+	width: 85%;
+
+	margin: 108px auto;
+
+}
+
+.content .welc-text{
+
+	width: 41%;
+
+	height: 724px;
+
+	border: 5px solid #bea472;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg");
+
+	background-position: center;
+
+}
+
+.content .welc-text div.wrap{
+
+	width: 88%;
+
+	margin: 36px auto 0;
+
+	padding-bottom: 68px;
+
+	height: 620px;
+
+	overflow: hidden;
+	position: relative;
+
+}
+
+.content .welc-text.room-text div.wrap{
+
+	height: 688px;
+
+	padding-bottom: 0;
+
+}
+
+.welc-text div.wrap div{
+
+	padding: 16px 0;
+
+	border-bottom: 1px solid #e2dbd0;
+
+	font-family: "Times New Roman";
+
+	font-size: 34px;
+
+	line-height: 34px;
+
+	color: #333;
+
+	text-transform:uppercase;
+
+	word-wrap:break-word;
+
+	word-break:break-all;
+
+}
+
+.welc-text div.wrap div span{
+
+	padding-right: 8px;	
+
+	font-size: 58px;
+
+	line-height: 58px;
+
+}
+
+.content .welc-text h4{
+
+	/* margin-bottom: 44px; */
+
+	padding: 16px 0;
+
+	font-size: 31px;
+
+	line-height: 30px;
+
+	color: #a99269;
+
+	border-bottom: 1px solid #e2dbd0;
+
+}
+
+.content .welc-text .p-text{
+
+	
+
+	padding-top: 44px;
+
+	font-size: 14px;
+
+	line-height: 30px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	border-bottom: none;
+
+}
+
+.content .welc-text.room-text .p-text{
+
+	width: 100%;
+
+	height: 185px;
+
+	padding-top: 32px;
+
+	border-bottom: none;
+
+}
+
+.content .welc-text.room-text li p{
+
+	width: 100%;
+
+	height: 30px;
+
+	padding-top: 0;
+
+}
+
+
+
+.welc-text.room-text h3{
+
+	padding-bottom: 34px;
+
+	font-size: 24px;
+
+	font-weight: 100;
+
+	color: #a99269;
+
+}
+
+.auto-icon{
+
+	position: absolute;
+
+	right: 25px;
+
+	top: 470px;
+
+}
+
+.auto-icon li{
+
+	display: block;
+
+	float: none;
+
+	width: 30px;
+
+	height: 30px;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/auto-icon.png");
+
+	background-repeat: no-repeat;
+
+	background-position: 6px 6px;
+
+}
+
+.auto-icon li.cur{
+
+	background-position: 6px -23px;
+
+}
+
+.welc-text.room-text li{
+
+	float: none;
+
+	font-family: "微软雅黑","Microsoft YaHei";
+
+	font-size: 15px;
+
+	line-height: 30px;
+
+	color: #333;
+
+}
+
+.welc-text.room-text li div{
+
+	padding: 0 0 0 53px;
+
+	border: none;
+
+	font-family: "微软雅黑","Microsoft YaHei";
+
+	font-size: 15px;
+
+	line-height: 30px;
+
+}
+
+.content .readmore{
+
+	position: absolute;
+
+	bottom: 26px;
+
+	display: block;
+
+	width: 90px;
+
+	text-align: center;
+
+	height: 22px;
+
+	margin-top: 30px;
+
+	border-bottom: 1px solid #a99269;
+
+	font-size: 18px;
+
+	line-height: 22px;
+
+	color: #a99269;
+
+	font-style: italic;
+
+}
+
+.content .readmore:hover{
+
+	border-radius: 4px;
+
+	color: #fff;
+
+	background-color: #a99269;
+
+}
+
+.content .welc-img{
+
+	width: 50%;
+
+	height: 734px;
+
+	overflow: hidden;
+
+}
+
+.welc-img .img-top img{
+
+	display: block;
+
+	width: 100%;
+
+	height: auto;
+
+}
+
+.content .welc-img .img-btm{
+
+	position: relative;
+
+	width: 100%;
+
+}
+
+.welc-img .img-btm img{
+
+	
+
+	margin-top: -21%;
+
+	margin-left: 13%;
+
+	display: block;
+
+	width: 38%;
+
+	height: auto;
+
+	padding: 15px;
+
+	background-color: #fff;
+
+}
+
+.welc-img .img-btm div.wave{
+
+	position: absolute;
+
+	right: 10%;
+
+	width: 110px;
+
+	height: 70px;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/wave.png");
+
+	background-position: center;
+
+	background-repeat: no-repeat;
+
+}
+
+#scrollPics2{
+
+	position: relative;
+
+	width: 100%;
+
+	overflow: hidden;
+
+}
+
+.welc-img .slider2 img{
+
+	display: block;
+
+	width: 658px;
+
+	height: 428px;
+
+	padding-top: 138px;
+
+}
+
+.welc-img .num{
+
+	position: absolute;
+
+	right: 30px;
+
+	bottom: 25px;
+
+}
+
+.welc-img .num li{
+
+	width: 50px;
+
+	height: 5px;
+
+	margin-left: 8px;
+
+	background-color: #fff;
+
+}
+
+.welc-img .num li.cur{
+
+	background-color: #e6d079;
+
+}
+
+/* welcome.php  E */
+
+/* footer.php   S */
+
+.footer{
+
+	width: 85%;
+
+	margin: 0 auto;
+
+	padding-bottom: 95px;
+
+	border-top: 1px solid #adadad;
+
+}
+
+.footer-wrap{
+
+	width: 91%;
+
+	margin: 0 auto;
+
+}
+
+.footer-left{
+
+	width: 18%;
+
+	padding-top: 38px;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/foote-line.jpg");
+
+	background-position: 88% 0;
+
+	background-repeat: no-repeat;
+
+}
+
+.footer-center{
+
+	width: 57%;
+
+	*width: 56.5%;
+
+	padding: 38px 0 0 2%;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/foote-line.jpg");
+
+	background-position: 88% 0;
+
+	background-repeat: no-repeat;
+
+}
+
+.footer-right h4,
+
+.footer-center h4{
+
+	padding-bottom: 20px;
+
+	font-size: 18px;
+
+	font-weight: 100;
+
+	line-height: 18px;
+
+	color: #a99269;
+
+}
+
+.footer-center p{
+
+	padding-bottom: 14px;
+
+	font-family: "微软雅黑","Microsoft YaHei";
+
+	font-size: 14px;
+
+	line-height: 14px;
+
+	color: #666;
+
+}
+
+.footer-center p span{
+
+	color: #a99269;
+
+}
+
+.footer-right{
+
+	width: 23%;
+
+	padding-top: 38px;
+
+}
+
+.footer-right span a{
+
+	padding: 0 10px;
+
+	font-family: "微软雅黑","Microsoft YaHei";
+
+	font-size: 14px;
+
+	line-height: 14px;
+
+	color: #666;
+
+}
+
+.footer-right span a:hover{
+
+	color: #a99269;
+
+}
+
+.footer-right span a.first-child{
+
+	padding-left: 0;
+
+}
+
+/* footer.php   E */
+
+/* bookingbar.php   S */
+
+.booking{
+
+	display: none;
+
+	width: 1000px;
+
+	height: 102px;
+
+	z-index: 10001;
+
+	position: fixed;
+
+	left: 50%;
+
+	top: 50%;
+
+	margin-left: -383px;
+
+	border: 1px solid #e2dbd0;
+
+}
+
+.booking form.warp{
+
+	width: 1000px;
+
+	height: 102px;
+
+	margin: 0 auto;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg");
+
+	background-position: center;
+
+}
+
+.booking-left{
+
+	width: 163px;
+
+	height: 103px;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/booking-bg.png");
+
+	background-position: center;
+
+	background-repeat: no-repeat;
+
+}
+
+.booking-left div{
+
+	padding: 24px 0 0 30px;
+
+	font-family: "微软雅黑","Microsoft YaHei";
+
+	font-size: 17px;
+
+	line-height: 17px;
+
+	color: #fff;
+
+}
+
+.booking-left div p{
+
+	padding-top: 10px;
+
+	font-size: 20px;
+
+	line-height: 20px;
+
+	font-weight: 700;
+
+}
+
+.booking-center{
+
+	width: 657px;
+
+	height: 103px;
+
+	padding: 0 20px;
+
+}
+
+.booking-center .input-group1,
+
+.booking-center .input-group2{
+
+	margin-right: 12px;
+
+	padding-top: 16px;
+
+	font-size: 15px;
+
+	color: #a99269;
+
+}
+
+.booking-center .input-group1 div,
+
+.booking-center .input-group2 div,
+
+.onl-booking .input-group div{
+
+	height: 35px;
+
+	line-height: 35px;
+
+	margin-top: 6px;
+
+	border: 1px solid #e2e2e2;
+
+	background-color: #fff;
+
+}
+
+.booking-center .input-group1 div{
+
+	width: 188px;
+
+}
+
+.booking-center .input-group2 div{
+
+	width: 118px;
+
+}
+
+.onl-booking .input-group div{
+
+	width: 362px;
+
+}
+
+.booking-center .input-group1 i,
+
+.booking-center .input-group2 .select-icon,
+
+.onl-booking .input-group div i,
+
+.onl-booking .input-group .select-icon{
+
+	padding-right: 1px;
+
+	border-radius: 4px;
+
+	box-shadow: 0 0 10px #ccc;
+
+	color: #333;
+
+}
+
+.booking-center .input-group1 i,
+
+.onl-booking .input-group i{
+
+	font-size: 22px;
+
+}
+
+.booking-center .input-group1 input,
+
+.booking-center .input-group2 input,
+
+.onl-booking .input-group input{
+
+	height: 35px;
+
+	line-height: 35px; 
+
+	border: none;
+
+	outline: none;
+
+	box-shadow: none;
+
+	text-indent: 1em;
+
+}
+
+.booking-center .input-group1 input{
+
+	width: 156px;
+
+}
+
+.onl-booking .input-group input{
+
+	width: 333px;
+
+}
+
+.booking-center .input-group2.last-child{
+
+	margin-right: 0;
+
+}
+
+.booking-center .select_box,
+
+.onl-booking .select_box{ 
+
+	position: relative;
+
+	text-indent: 1em;
+
+	line-height: 35px;
+
+}
+
+.select_box select{ 
+
+	opacity: 0;
+
+	filter:alpha(opacity=0);
+
+	position: absolute;
+
+	left: 0;
+
+	top: 0;
+
+	width: 100%;
+
+	height: 100%;
+
+}
+
+.booking-center .input-group2 i,
+
+.onl-booking .select-icon i {
+
+	position: absolute;
+
+	top: 9px;
+
+	left: 7px;
+
+	width: 0;
+
+	height: 0;
+
+	border-left: 4px solid transparent;
+
+	border-right: 4px solid transparent;
+
+	border-top: 5px solid #818181;
+
+}
+
+.select-icon{
+
+	position: absolute;
+
+	right: 6px;
+
+	top: 7px;
+
+	display: block;
+
+	width: 22px;
+
+	height: 22px;
+
+}
+
+.booking-right{
+
+	position: relative;
+
+	width: 140px;
+
+	height: 102px;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/booking-bg2.png");
+
+	background-position: center;
+
+}
+
+.booking-right a{
+
+	display: block;
+
+	width: 140px;
+
+	height: 102px;
+
+	line-height: 102px;
+
+	font-family: "微软雅黑","Microsoft YaHei";
+
+	font-size: 18px;
+
+	color: #fff;
+
+	background: none;
+
+	border: none;
+
+	outline: none;
+
+	box-shadow: none;
+
+	text-align: center;
+
+}
+
+.booking-right i{
+
+	position: absolute;
+
+	top: 41px;
+
+	right: 18px;
+
+	font-size: 18px;
+
+	color: #fff;
+
+}
+
+/* bookingbar.php   E */
+
+
+
+/* about.php  S */
+
+.about-banner img{
+
+	display: block;
+
+	width: 100%;
+
+	height: auto;
+
+}
+
+.about-content{
+
+	width: 960px;
+
+	margin: 0 auto;
+
+	padding-bottom: 146px;
+
+}
+
+.about-top .wrap div,
+
+.about-bottom .wrap div{
+
+	padding: 16px 0;
+
+	border-bottom: 1px solid #e2dbd0;
+
+	font-family: "Times New Roman";
+
+	font-size: 34px;
+
+	line-height: 34px;
+
+	color: #333;
+
+	text-transform:uppercase;
+
+	word-wrap:break-word;
+
+	word-break:break-all;
+
+
+
+} 
+
+.about-top .wrap div span,
+
+.about-bottom .wrap div span{
+
+	padding-right: 8px;
+
+	font-size: 58px;
+
+	line-height: 58px;
+
+}
+
+.about-top .wrap h4,
+
+.about-bottom .wrap h4{
+
+	width: 862px;
+
+	word-break:keep-all;
+
+	white-space:nowrap;
+
+	overflow:hidden;
+
+	text-overflow:ellipsis;
+
+	padding: 16px 0;
+
+	font-size: 31px;
+
+	line-height: 30px;
+
+	color: #a99269;
+
+	border-bottom: 1px solid #e2dbd0;
+
+	margin-bottom: 30px;
+
+}
+
+.about-bottom .wrap h4{
+
+	width: 322px;
+
+}
+
+.content-title{
+
+	padding-top: 100px;
+
+	font-family: "Times New Roman";
+
+	font-size: 42px;
+
+	font-weight: 100;
+
+	line-height: 42px;
+
+	color: #ae9975;
+
+	text-align: center;
+
+}
+
+.content-small{
+
+	padding-bottom: 95px;
+
+	font-size: 30px;
+
+	line-height:30px;
+
+	color: #666;
+
+	overflow: hidden;
+
+}
+
+.content-small span.pull-left{
+
+	display: block;
+
+	width: 372px;
+
+	padding-top: 30px;
+
+	*padding-top: 0;
+
+	border-bottom: 1px solid #e2dbd0;
+
+}
+
+.content-small span.pull-left.center{
+
+	width: 216px;
+
+	padding-top: 15px;
+
+	text-align: center;
+
+	border-bottom: none;
+
+	font-size: 30px;
+
+	line-height: 30px;
+
+	color: #666;
+
+}
+
+.about-top{
+
+	width: 950px;
+
+	/* height: 490px; */
+
+	margin: 36px auto 0;
+
+	border: 5px solid #a99269;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg");
+
+	background-position: center;
+
+}
+
+.about-top .wrap{
+
+	margin: 45px 44px 0;
+
+	padding-bottom: 30px;
+
+}
+
+.about-top .wrap .p-text{
+
+	/* padding-top: 46px;
+
+	padding-bottom: 30px; */
+
+	font-size: 14px;
+
+	line-height: 30px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	overflow: hidden;
+
+	border-bottom: none;
+
+}
+
+.about-center{
+
+	position: relative;
+
+	width: 960px;
+
+	height: 490px;
+
+	margin: 98px 0 50px 0;
+
+}
+
+.about-center .img-1{
+
+	position: absolute;
+
+	left: 0;
+
+	top: 0;
+
+}
+
+.about-center .img-3{
+
+	position: absolute;
+
+	right: 140px;
+
+	top: 40px;
+
+}
+
+.about-center .img-2{
+
+	position: absolute;
+
+	right: 0;
+
+	bottom: 0;
+
+}
+
+.about-bottom .bottom-text{
+
+	width: 410px;
+
+	height: 552px;
+
+	border: 5px solid #a99269;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg");
+
+}
+
+.about-bottom .bottom-text .wrap{
+
+	margin: 45px 44px 0;
+
+}
+
+.about-bottom .bottom-img img{
+
+	padding-top: 100px;
+
+	width: 510px;
+
+	height: 352px;
+
+}
+
+.about-bottom .wrap ul{
+
+	padding-top: 46px;
+
+}
+
+.about-bottom .wrap li{
+
+	float: none;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	font-size: 14px;
+
+	line-height: 30px;
+
+	color: #666;
+
+}
+
+.about-bottom li span{
+
+	font-weight: 600;
+
+}
+
+/* about.php  E */
+
+
+
+/* room_center.php   S */
+
+.room-content{
+
+	width: 960px;
+
+	margin: 0 auto;
+
+	padding-bottom: 52px;
+
+}
+
+.room-list{
+
+	margin-bottom: 50px;
+
+	overflow: hidden;
+
+}
+
+.room-list div.wrap{
+
+	width: 458px;
+	height:650px;
+	/* height: 552px; */
+
+	background-color: #f6f6f6;
+
+	border: 3px solid #fff;
+
+}
+
+.room-list div.wrap:hover{
+
+	border-color: #a99269;
+
+}
+
+/* .room-list div .room-img{
+
+	display: block;
+
+	width: 458px;
+
+	height: 280px;
+
+	background-position: center;
+
+	background-repeat: no-repeat;
+
+} */
+
+.room-list div.wrap h4,
+
+.detail-text h4{
+
+	padding: 26px 30px;
+
+	font-size: 18px;
+
+	line-height: 18px;
+
+	color: #111;
+
+}
+
+.room-list div.wrap p,
+
+.detail-text p{
+
+	padding: 0 30px 15px;
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	line-height: 14px;
+
+	color: #666;
+
+}
+
+.room-list div.wrap a.online-b,
+
+.detail-text  a.online-b{
+
+	display: block;
+
+	width: 150px;
+
+	height: 35px;
+	margin: 15 0 0 30px;
+
+	line-height: 35px;
+
+	border: 1px solid #a99269;
+
+	text-align: center;
+
+	font-size: 16px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	color: #a99269;
+
+}
+
+.detail-text  a.online-b{
+
+	margin: 15px auto 30px;
+
+}
+
+.room-list div.wrap a.online-b:hover,
+
+.detail-text  a.online-b:hover{
+
+	color: #fff;
+
+	background-color: #a99269;
+
+}
+
+.detail-text{
+
+	width: 990px;
+
+	height: 284px;
+
+	margin-top: 40px;
+
+	border: 5px solid #a99269;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg");
+
+}
+
+/* room_center.php   E */
+
+/* online-booking.php   S */
+
+.onl-booking{
+
+	width: 840px;
+
+	/*height: 882px;*/
+
+    font-family: "宋体","SimSun","\5b8b\4f53";
+
+	background-color: #fff;
+
+}
+
+.onl-booking .wrap{
+
+	margin: 0 48px;
+
+	border-top: 1px solid #d9d9d9;
+
+	overflow: hidden;
+
+}
+
+.ui-dialog-title{
+
+	padding: 35px 0 30px;
+
+	margin: 0 48px;
+
+	font-size: 26px;
+
+	line-height: 26px;
+
+	font-weight: 100;
+
+	text-align: center;
+
+	color: #bea17c;
+
+}
+
+.ui-dialog-close{
+
+	float: right;
+
+	display: block;
+
+	width: 0;
+
+	height: 0;
+
+	*width: 34px;
+
+	*height: 30px;
+
+	padding: 30px 34px 0 0;
+
+	margin: 16px 12px 0 0;
+
+	font-size: 30px;
+
+	border: none;
+
+	outline: none;
+
+	box-shadow: none;
+
+	background-color: #fff;
+
+	color: #fff;
+
+	cursor: pointer;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/close.jpg");
+
+	background-repeat: no-repeat;
+
+	background-position: center;
+
+}
+
+.onl-booking .input-group{
+
+	margin-right: 15px;
+
+	padding-top: 16px;
+
+	font-size: 15px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+}
+
+.onl-booking .input-group div,
+
+.onl-booking .input-group input{
+
+	background-color: #f7f7f7;	
+
+}
+
+.onl-booking .input-group.last-child{
+
+	margin-right: 0;
+
+}
+
+.onl-booking .input-group label{
+
+	font-size: 16px;
+
+	color: #a99269;
+
+}
+
+.onl-booking .select-icon{
+
+	background-color: #fff;
+
+}
+
+.ui-dialog-header{
+
+	background-color: #fff;
+
+}
+
+.room-group{
+
+	height: 608px;
+
+	margin: 35px 0 50px;
+
+	overflow-y
+
+}
+
+.room-msg{
+
+	padding-bottom: 15px;
+
+}
+
+.room-msg img{
+
+	display: block;
+
+	width: 320px;
+
+	height: 196px;
+
+}
+
+.room-msg div{
+
+	width: 424px;
+
+	height: 196px;
+
+	background-color: #f6f6f6;
+
+}
+
+.room-msg h4{
+
+	padding: 16px 36px 12px;
+
+	font-size: 18px;
+
+	line-height: 18px;
+
+	color: #111;
+
+}
+
+.room-msg p{
+
+	padding: 0 14px 0 36px;
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	line-height: 20px;
+
+	color: #666;
+
+	word-wrap: break-word;
+
+	word-break: break-all;
+
+}
+
+.room-msg  a.online-b{
+
+	display: block;
+
+	width: 110px;
+
+	height: 30px;
+
+	margin: 8px 0 0 34px;
+
+	line-height: 30px;
+
+	border: 1px solid #a99269;
+
+	text-align: center;
+
+	font-size: 16px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	color: #a99269;
+
+}
+
+.room-msg  a.online-b:hover{
+
+	color: #fff;
+
+	background-color: #a99269;
+
+}
+
+/* online-booking.php   E */
+
+/* information.php    S */
+
+.padr-30{
+
+	padding-right: 30px;
+
+}
+
+.padr-110{
+
+	padding-right: 110px;
+
+}
+
+.onl-booking.inform{
+
+	height: 700px;
+
+}
+
+.inform .room-msg div{
+
+	height: 166px;
+
+	padding-top: 30px;
+
+}
+
+.onl-booking.inform .wrap{
+
+	border-top: none;
+
+}
+
+.inform .room-msg p{
+
+	padding: 0 4px 10px 28px;
+
+}
+
+.inform .room-msg p.last-child{
+
+	padding: 30px 20px 0 0;
+
+}
+
+.inform .input-group input{
+
+	width: 100%;
+
+}
+
+.inform .input-group input.time{
+
+	width: 333px;
+
+}
+
+.inform .input-group textarea{
+
+	display: block;
+
+	width: 726px;
+
+	height: 70px;
+
+	padding: 5px 8px;
+
+	border: 1px solid #e2e2e2;
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	line-height: 23px;
+
+	background-color: #f7f7f7;
+
+	text-indent: 1em;
+
+}
+
+.input-text{
+
+	position: relative;
+
+}
+
+.input-text #textnum_js{
+
+	position: absolute;
+
+	bottom: 2px;
+
+	right: 6px;
+
+	*right: 20px;
+
+}
+
+.inform-btn{
+
+	position: relative;
+
+	width: 151px;
+
+	margin-top: 30px;
+
+	background-repeat: no-repeat;
+
+	background-position: center;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/input-bg.jpg");
+
+}
+
+.inform-btn input{
+
+	display: block;
+
+	width: 117px;
+
+	height: 44px;
+
+	line-height: 44px;
+
+	border: none;
+
+	outline: none;
+
+	box-shadow: none;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	font-size: 16px;
+
+	color: #fff;
+
+	background: none;
+
+}
+
+.inform-btn i{
+
+	position: absolute;
+
+	top: 10px;
+
+	right: 34px;
+
+	color: #fff;
+
+}
+
+/* information.php    E */
+
+/* contact.php    S */
+
+.contact .wrap p span{
+
+	display: block;
+
+	padding-bottom: 12px;
+
+	font-size: 16px;
+
+	line-height: 16px;
+
+	color: #666;
+
+}
+
+.contact .wrap span i{
+
+	font-family: Arial;
+
+	font-size: 16px;
+
+	font-weight: 600;
+
+	color: #a99269;
+
+}
+
+.BMap_cpyCtrl,.anchorBL {
+
+	display: none;
+
+}
+
+/* contact.php    E */
+
+/* meeting.php    S */
+
+.meeting .wrap p span{
+
+	display: block;
+
+}
+
+.meeting .wrap p span.first-child{
+
+	padding-bottom: 30px;
+
+}
+
+.meeting .about-top{
+
+	/* height: 520px; */
+
+}
+
+.meeting-group{
+
+	padding-top: 65px;
+
+}
+
+.meeting-list{
+
+	padding-bottom: 35px;
+
+}
+
+.meeting-list div{
+
+	position: relative;
+
+	overflow: hidden;
+
+}
+
+.meeting-list div p{
+
+	width: 100%;
+
+	height: 50px;
+
+	line-height: 50px;
+
+	font-size: 18px;
+
+	color: #666;
+
+}
+
+.meeting-list div a{
+
+	position: absolute;
+
+	top: 0;
+
+	left: -100%;
+
+	display: block;
+
+	width: 460px;
+
+	height: 304px;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/meeting-bg.png");
+
+	background-repeat: no-repeat;
+
+	background-position: center;
+
+}
+
+.meeting-list img{
+
+	display: block;
+
+	width: 460px;
+
+	height: 304px;
+
+}
+
+.meeting-list div:hover{
+
+	border-color: #c3b59d;
+
+}
+
+.meeting-list div:hover a{
+
+	left: 0;
+
+}
+
+/* meeting.php    E */
+
+/* meeting_detail.php   S */
+
+.meeting-detail img{
+
+	display: block;
+
+	width: 100%;
+
+	height: auto;
+
+}
+
+.meeting-detail p{
+
+	padding-top: 30px;
+
+	font-size: 15px;
+
+	line-height: 15px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	color: #666;
+
+}
+
+/* meeting_detail.php   E */
+
+
+
+/* news.php  S */
+
+.news.about-content{
+
+	padding-bottom: 110px;
+
+}
+
+.news ul{
+
+	height: 450px;
+
+	padding-top: 40px;
+
+}
+
+.news ul li{
+
+	float: none;
+
+	padding: 11px 0;
+
+	border-bottom: 1px dashed #ddd;
+
+}
+
+.news li a{
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	color: #666;
+
+}
+
+.news li:hover{
+
+	background-color: #c3b59d;
+
+}
+
+.news li.last-child:hover{
+
+	background: none;
+
+}
+
+.news li span{
+
+	display: block;
+
+	padding: 0 5px;
+
+}
+
+.news li.more{
+
+	display: none;
+
+}
+
+.news li span.pull-left{
+
+	width: 700px;
+
+	display:block;
+
+	word-break:keep-all;
+
+	white-space:nowrap;
+
+	overflow:hidden;
+
+	text-overflow:ellipsis;
+
+}
+
+.news li:hover a{
+
+	color: #fff;
+
+}
+
+.news li.last-child{
+
+	padding: 48px 0 54px 0;
+
+	border-bottom: none;
+
+}
+
+.news li.last-child .readmore{
+
+	display: block;
+
+	width: 152px;
+
+	height: 35px;
+
+	margin: 0 auto;
+
+	border: 1px solid #a99269;
+
+	line-height: 35px;
+
+	text-align: center;
+
+	font-size: 18px;
+
+	font-style: italic;
+
+	color: #a99269;
+
+	cursor: pointer;
+
+}
+
+.news li.last-child .readmore:hover{
+
+	background-color: #a99269;
+
+	color: #fff;
+
+}
+
+.news .about-top {
+
+	height: 770px;
+
+	*height: 800px;
+
+}
+
+.deals-group div{
+
+	width: 462px;
+
+}
+
+.deals-group div img{
+
+	display: block;
+
+	width: 462px;
+
+	height: 298px;
+
+}
+
+.deals-list .deals-title{
+
+	display: block;
+
+	width: 356px;
+
+	height: 70px;
+
+	line-height: 70px;
+
+	text-align: center;
+
+	margin: 0 auto;
+
+	border-bottom: 1px solid #a99269;
+
+}
+
+.deals-list h4.deals-title{
+
+	margin-top: 50px;
+
+	font-family: "Times New Roman";
+
+	font-size: 36px;
+
+	font-weight: 100;
+
+	color: #333;
+
+}
+
+.deals-list small.deals-title{
+
+	margin-bottom: 70px;
+
+	font-size: 30px;
+
+	color: #a99269;
+
+}
+
+.deals-group p .deals-big{
+
+	display: block;
+
+	width: 442px;
+
+	padding-top: 30px;
+
+	font-size: 18px;
+
+	font-weight: 100;
+
+	line-height: 18px;
+
+	color: #333;
+
+	word-break:keep-all;
+
+	white-space:nowrap;
+
+	overflow:hidden;
+
+	text-overflow:ellipsis;
+
+}
+
+.deals-group p .deals-time{
+
+	display: block;
+
+	padding: 14px 0;
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	line-height: 14px;
+
+	color: #999;
+
+}
+
+.deals-group p .deals-small{
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	line-height: 26px;
+
+	color: #666;
+
+}
+
+.deals-group .readmore{
+
+	display: block;
+
+	width: 152px;
+
+	height: 35px;
+
+	margin: 20px 0 68px;
+
+	border: 1px solid #a99269;
+
+	line-height: 35px;
+
+	text-align: center;
+
+	font-size: 18px;
+
+	font-style: italic;
+
+	color: #a99269;
+
+}
+
+.deals-group .readmore:hover{
+
+	background-color: #a99269;
+
+	color: #fff;
+
+}
+
+/* news.php  E */
+
+/* dining.php   S */
+
+.dining .about-top{
+
+	/* height: 380px; */
+
+}
+
+.dining .about-top .wrap .p-text{
+
+	/* height: 135px;
+
+	padding-top: 28px; */
+
+
+
+	line-height: 38px;
+
+}
+
+.dining .about-bottom .p-text{
+
+	font-size: 14px;
+
+	line-height: 30px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	overflow: hidden;
+
+	border-bottom: none;
+
+}
+
+.dining .img-1{
+
+	width: 660px;
+
+	height: 400px;
+
+	overflow: hidden;
+
+}
+
+#scrollPics3 .slider3 img{
+
+	display: block;
+
+	width: 660px;
+
+	height: 400px;
+
+}
+
+.dining .num{
+
+	position: absolute;
+
+	right: 35px;
+
+	bottom: 28px;
+
+}
+
+.dining .num li {
+
+    width: 25px;
+
+    height: 3px;
+
+    margin-left: 8px;
+
+    background-color: #fff;
+
+}
+
+.dining .num li.cur{
+
+	background-color: #a99269;
+
+}
+
+.bottom-img #scrollPics4{
+
+	position: relative;
+
+	width: 510px;
+
+	height: 498px;
+
+	overflow: hidden;
+
+}
+
+#scrollPics4 .slider4 img{
+
+	display: block;
+
+	width: 510px;
+
+	height: 394px;
+
+}
+
+/* dining.php   E */
+
+/* news_list.php    S */
+
+.news-list.about-top{
+
+	height: 1120px;
+
+}
+
+.news-list.about-top ul{
+
+	height: auto !important;
+
+}
+
+/* news_list.php    E */
+
+/* detail.php    S */
+
+.detail{
+
+	min-height: 786px;
+
+	width: 950px;
+
+	margin: 36px auto 0;
+
+	border: 5px solid #a99269;
+
+	background-image: url("http://www.sppeninsula.com/static/web/css/../img/left-bg.jpg");
+
+	background-position: center;
+
+}
+
+.detail .wrap {
+
+    margin: 45px 44px 0;
+
+}
+
+.detail .title{
+
+	padding: 16px 0;
+
+	border-bottom: 1px solid #e2dbd0;
+
+	font-family: "Times New Roman";
+
+	font-size: 34px;
+
+	line-height: 34px;
+
+	color: #333;
+
+}
+
+.detail h4{
+
+	width: 902px;
+
+	padding: 16px 0;
+
+	margin-bottom: 40px;
+
+	font-size: 31px;
+
+	line-height: 30px;
+
+	color: #a99269;
+
+	border-bottom: 1px solid #e2dbd0;
+
+	word-break:keep-all;
+
+	white-space:nowrap;
+
+	overflow:hidden;
+
+	text-overflow:ellipsis;
+
+}
+
+.detail p{
+
+	line-height: 30px;
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	text-indent: 2em;
+
+}
+
+.detail p img{
+
+	display: block;
+
+	max-width: 902px;
+
+	height: auto;
+
+	padding: 20px 0;
+
+	margin: 0 auto;
+
+}
+
+.pager-link{
+
+	margin-top: 40px;
+
+	position: relative;
+
+}
+
+.pager-link div{
+
+	padding: 15px 0;
+
+}
+
+.pager-link div a{
+
+	display: block;
+
+	width: 600px;
+
+	padding: 8px 10px;
+
+	font-size: 14px;
+
+	font-family: "Microsoft YaHei","微软雅黑";
+
+	color: #666;
+
+	word-break:keep-all;
+
+	white-space:nowrap;
+
+	overflow:hidden;
+
+	text-overflow:ellipsis;
+
+}
+
+.pager-link div a:hover{
+
+	background-color: #a99269;
+
+	color: #fff;
+
+}
+
+.pager-link .back{
+
+	position: absolute;
+
+	right: 10px;
+
+	top: 38px;
+
+	display: block;
+
+	width: 80px;
+
+	height: 34px;
+
+	line-height: 34px;
+
+	text-align: center;
+
+	border: 1px solid #e2dbd0;
+
+	font-size: 16px;
+
+	color: #666;
+
+}
+
+.pager-link .back:hover{
+
+	color: #fff;
+
+	background-color: #a99269;
+
+}
+
+/* detail.php    S */
+
+/*分页*/
+
+#pagination-digg{
+
+	*padding-top: 45px;
+
+	border-bottom: none;
+
+	text-align: center;
+
+}
+
+#pagination-digg a{
+
+	border: solid 1px #ccc;
+
+	font-size: 14px;
+
+	color: #666;
+
+	padding: 5px 10px;
+
+	cursor: pointer;
+
+}
+
+#pagination-digg a:hover{
+
+	background-color: #ae9975;
+
+	color: #fff !important;
+
+}
+
+</style>

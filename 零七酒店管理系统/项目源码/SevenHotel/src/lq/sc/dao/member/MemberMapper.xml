@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.member.MemberMapper">
+	<!-- 得到所有会员福利 -->
+	<select id="getAllMember" resultType="Member">
+		SELECT * FROM member
+	</select>
+	<!-- 检验会员类别是否已有 -->
+	<select id="selMemberType" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM member WHERE memberType=#{memberType}
+	</select>
+	<!-- 添加会员类别 -->
+	<insert id="addMemberType" parameterType="Member">
+		INSERT INTO member(memberType,discount,createdBy,creationDate)
+		VALUES(#{memberType},#{discount},#{createdBy},NOW())
+	</insert>
+	<!-- 根据id查询会员类别 -->
+	<select id="selMemberById" parameterType="int" resultType="Member">
+		SELECT * FROM member WHERE id=#{id}
+	</select>
+	<!-- 根据id修改会员福利 -->
+	<update id="modifyMemberById" parameterType="Member">
+		UPDATE member SET memberType=#{memberType},discount=#{discount},modifyBy=#{modifyBy},modifyDate=NOW() WHERE id=#{id}
+	</update>
+	<!-- 根据id删除会员福利 -->
+	<delete id="deleteMemberById" parameterType="int">
+		delete from member where id=#{id}
+	</delete>
+</mapper>

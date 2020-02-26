@@ -1,0 +1,110 @@
+.main_box {
+	height: 100%;
+	background-color: #fff;
+	border-radius: 15px;
+	overflow: auto;
+}
+
+.main_box h2 {
+	padding: 20px;
+	line-height: 26px;
+	font-size: 16px;
+}
+
+.main_box h2 span,.hello_box h2 span {
+	height: 26px;
+	width: 3px;
+	background-color: #e7711d;
+	border: 0;
+	float: left;
+	margin-right: 10px;
+}
+
+.cont_box {
+	margin: 0 20px 20px;
+}
+/*table*/
+.table {
+	width: 100%;
+	border-left: 1px solid #ddd;
+}
+
+.table th,.table td {
+	min-width: 45px;
+	max-width: 500px;
+	padding: 10px 8px;
+	line-height: 20px;
+	border: 1px solid #ddd;
+	border-left: 0;
+	text-align: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.table th {
+	background-color: #efefef;
+	line-height: 23px;
+	font-weight: 600;
+	white-space: nowrap;
+	position: relative;
+}
+
+.table td {
+	border-top: 0;
+}
+
+.pre_table td {
+	white-space: inherit;
+}
+
+.table tbody tr:hover {
+	background-color: #ffffe2;
+}
+
+tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.table tbody tr.tr_bg {
+	background-color: #fff1c4;
+}
+
+.dataTables_filter .btn {
+	padding: 8px 12px;
+	margin: 0;
+}
+
+.table .table_row {
+	border-top: 1px solid #ddd;
+	padding: 8px;
+}
+
+.table td .table_row:first-child {
+	border: 0;
+}
+
+.table .td_row {
+	padding: 0;
+}
+#commentDiv{
+	height: auto;
+	display: none;
+}
+#commentDiv>ul>li{
+	height: 36px;
+}
+#commentDiv>ul>li:nth-child(2n-1){
+	background-color: #FAFAFA;
+}
+#commentDiv>ul>li label{
+	width: 100px;
+	padding-left: 15px;
+}
+#commentDiv>ul>li:nth-child(2){
+	height: 71px;
+}
+#commentDiv>ul>li:last-child{
+	height: 95px;
+	padding-left: 75px;
+}

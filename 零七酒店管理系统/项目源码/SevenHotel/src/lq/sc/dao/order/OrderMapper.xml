@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.order.OrderMapper">
+	<!-- 添加订单 -->
+	<insert id="addOrder" parameterType="Order">
+		INSERT INTO
+		`order`(roomTypeId,userId,checkInTime,checkOutTime,orderTime,orderRoomNum,orderState,settlement,orderDesc)
+		VALUES(#{roomTypeId},#{userId},#{checkInTime},#{checkOutTime},Now(),#{orderRoomNum},#{orderState},#{settlement},#{orderDesc})
+	</insert>
+	<!-- 查看未处理的订单 -->
+	<select id="selUntreatedOrder" resultMap="orderList">
+		SELECT *,r.`id`
+		r_id,c.`id` c_id,m.`id` m_id,b.`id` b_id FROM `order` o
+		INNER JOIN roomtype r
+		ON
+		o.`roomTypeId`=r.`id`
+		INNER JOIN customer c ON
+		o.`userId`=c.`id`
+		INNER JOIN member m ON c.`userMemberId`=m.`id`
+		INNER
+		JOIN bank b ON c.`id`=b.`userId`
+		WHERE o.`id` NOT IN(SELECT orderId FROM checkin)
+		AND o.orderState=1
+		ORDER BY o.`checkOutTime` DESC
+	</select>
+	<!-- 分页查询所有订单 -->
+	<select id="selAllOrderPage" parameterType="Map" resultMap="orderList">
+		SELECT *,r.`id`
+		r_id,c.`id` c_id,m.`id` m_id,b.`id` b_id FROM `order` o
+		INNER JOIN roomtype r
+		ON
+		o.`roomTypeId`=r.`id`
+		INNER JOIN customer c ON
+		o.`userId`=c.`id`
+		INNER JOIN member m ON c.`userMemberId`=m.`id`
+		INNER
+		JOIN bank b ON c.`id`=b.`userId`
+		<where>
+			<if test="userName!=null and userName!=''">
+				and c.userName like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="orderState!=null and orderState!=''">
+				and o.orderState = #{orderState}
+			</if>
+		</where>
+		order by o.`orderTime` DESC limit #{currentPageNo},#{pageSize}
+	</select>
+	<resultMap type="Order" id="orderList">
+		<id column="id" property="id" />
+		<association property="customer" resultMap="customerList" />
+		<association property="roomtype" resultMap="roomTypeList" />
+	</resultMap>
+	<resultMap type="RoomType" id="roomTypeList">
+		<id property="id" column="r_id"></id>
+		<result property="roomTypeName" column="roomTypeName" />
+		<result property="roomImg" column="roomImg" />
+		<result property="sketch" column="sketch" />
+		<result property="describe" column="describe" />
+		<result property="typePrice" column="typePrice" />
+	</resultMap>
+	<resultMap type="Customer" id="customerList">
+		<id property="id" column="c_id"></id>
+		<result property="userCode" column="userCode" />
+		<result property="userName" column="userName" />
+		<result property="userPassword" column="userPassword" />
+		<result property="userPhone" column="userPhone" />
+		<result property="userCard" column="userCard" />
+		<association property="bank" resultMap="bankList" />
+		<association property="member" resultMap="memberList" />
+	</resultMap>
+	<resultMap type="Member" id="memberList">
+		<id property="id" column="m_id" />
+		<result property="memberType" column="memberType" />
+		<result property="discount" column="discount" />
+		<result property="createdBy" column="createdBy" />
+		<result property="creationDate" column="creationDate" />
+		<result property="modifyBy" column="modifyBy" />
+		<result property="modifyDate" column="modifyDate" />
+	</resultMap>
+	<resultMap type="Bank" id="bankList">
+		<id property="id" column="b_id" />
+		<result property="userId" column="userId" />
+		<result property="bankName" column="bankName" />
+		<result property="bankCard" column="bankCard" />
+		<result property="balance" column="balance" />
+	</resultMap>
+	<!-- 查询订单总数 -->
+	<select id="getAllOrderCount" resultType="int">
+		SELECT COUNT(*) FROM `order` o INNER JOIN customer c
+		ON
+		o.`userId`=c.`id`
+		<where>
+			<if test="userName!=null and userName!=''">
+				and c.userName like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="orderState!=null and orderState!=''">
+				AND o.orderState=#{orderState}
+			</if>
+		</where>
+	</select>
+	<!-- 根据id查询订单详情 -->
+	<select id="selOrderById" parameterType="int" resultMap="orderList">
+		SELECT *,r.`id`
+		r_id,c.`id` c_id,m.`id` m_id,b.`id` b_id FROM `order` o
+		INNER JOIN roomtype r
+		ON
+		o.`roomTypeId`=r.`id`
+		INNER JOIN customer c ON
+		o.`userId`=c.`id`
+		INNER JOIN member m ON c.`userMemberId`=m.`id`
+		INNER
+		JOIN bank b ON c.`id`=b.`userId`
+		where o.id=#{orderId}
+	</select>
+	<!-- 根据id进行退单处理 -->
+	<update id="modifyOrderStateIsFour" parameterType="int">
+		UPDATE `order` SET orderState=4 WHERE id=#{orderId}
+	</update>
+	<!-- 根据id进行订单回收 -->
+	<update id="modifyOrderStateIsThree" parameterType="int">
+		UPDATE `order` SET orderState=3 WHERE id=#{orderId}
+	</update>
+	<!-- 根据id进行支付未付款订单 -->
+	<update id="modifyOrderStateIsOne" parameterType="int">
+		UPDATE `order` SET orderState=1 WHERE id=#{orderId}
+	</update>
+	<!-- 根据订单id进行删除 -->
+	<delete id="deleteOrder" parameterType="int">
+		delete from `order` where id=#{orderId}
+	</delete>
+	<!-- 查询未处理的订单中已经预定的房间类型的数量 -->
+	<select id="selUntreatedOrderRoomNum" parameterType="int" resultType="Integer">
+		SELECT orderRoomNum FROM `order`
+		WHERE `id` NOT IN(SELECT orderId FROM checkin)
+		AND orderState=1
+		AND roomTypeId=#{roomTypeId}
+		AND DATEDIFF(NOW(),checkOutTime)&lt;0
+	</select>
+	<!-- 根据用户id查询客户未付款的订单 -->
+	<select id="selUntreatedOrderByCustomerId" resultMap="orderList" parameterType="int">
+		SELECT *,r.`id`
+		r_id,c.`id` c_id,m.`id` m_id,b.`id` b_id FROM `order` o
+		INNER JOIN roomtype r
+		ON
+		o.`roomTypeId`=r.`id`
+		INNER JOIN customer c ON
+		o.`userId`=c.`id`
+		INNER JOIN member m ON c.`userMemberId`=m.`id`
+		INNER
+		JOIN bank b ON c.`id`=b.`userId`
+		WHERE o.userId=#{customerId} AND o.orderState=2
+		order by o.orderTime DESC
+	</select>
+	<!-- 通过用户名删除订单 -->
+	<delete id="deleteOrder_ByCustomerId" parameterType="int">
+		delete from `order` where userId=#{customerId}
+	</delete>
+	<!-- 根据入住-离开时间查询订单 -->
+	<select id="selOrder_ByCheckRangeTime" parameterType="int" resultMap="orderList">
+		SELECT * FROM `order` WHERE checkInTime=#{checkInTime} AND checkOutTime=#{checkOutTime}
+	</select>
+	<!-- 查询订单总收益 -->
+	<select id="selBusiness" resultType="double">
+		select sum(settlement) from `order` where orderState in(1,3)
+	</select>
+	<!-- 查询下单最多的前三订单 -->
+	<select id="selTopThree" resultMap="orderList">
+		SELECT *,COUNT(o.`id`),r.`id`
+		r_id,c.`id` c_id,m.`id` m_id,b.`id` b_id FROM `order` o
+		INNER JOIN roomtype r
+		ON
+		o.`roomTypeId`=r.`id`
+		INNER JOIN customer c ON
+		o.`userId`=c.`id`
+		INNER JOIN member m ON c.`userMemberId`=m.`id`
+		INNER
+		JOIN bank b ON c.`id`=b.`userId`
+		GROUP BY o.`roomTypeId`
+		LIMIT 0,3
+	</select>
+</mapper>

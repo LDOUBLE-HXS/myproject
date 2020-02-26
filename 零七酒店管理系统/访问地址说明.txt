@@ -1,0 +1,11 @@
+客户端:http://localhost:8080/SevenHotel/user/main
+
+登陆测试号 账号:yangguo 密码:000000
+
+也可自行注册
+
+后台管理端:http://localhost:8080/SevenHotel/manager/login
+
+管理员登陆测试号 账号：admin 密码：1234567
+
+此项目使用MySql user=root password=root123

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.bank.BankMapper">
+	<!-- 根据id查询用户银行卡 -->
+	<select id="selBankInfById" parameterType="int" resultType="Bank">
+		select * from bank where userId=#{customerId}
+	</select>
+	<!-- 绑定银行卡 -->
+	<insert id="bindBankCard" parameterType="Bank">
+		INSERT INTO bank(userId,bankName,bankCard,bankPassword,balance) VALUES(#{userId},#{bankName},#{bankCard},#{bankPassword},#{balance})
+	</insert>
+	<!-- 更改余额 -->
+	<update id="payForOrder" parameterType="Bank">
+		UPDATE bank SET balance=#{balance} WHERE userId=#{userId}
+	</update>
+	<!-- 根据用户id删除银行卡 -->
+	<delete id="deleteBankByCustomerId" parameterType="int">
+		DELETE FROM bank WHERE userId=#{customerId}
+	</delete>
+</mapper>

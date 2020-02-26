@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.roomtype.RoomTypeMapper">
+	<!-- 查询所有房间类型 -->
+	<select id="selAllRoomType" resultType="RoomType">
+		SELECT * FROM roomtype
+	</select>
+	<!-- 查询标准间 -->
+	<select id="selBZRoom" resultType="RoomType">
+		SELECT * FROM roomtype WHERE roomTypeName LIKE '标准%'
+	</select>
+	<!-- 查询豪华间 -->
+	<select id="selHHRoom" resultType="RoomType">
+		SELECT * FROM roomtype WHERE roomTypeName LIKE '豪华%'
+	</select>
+	<!-- 查询其他房间类型 -->
+	<select id="selOtherRoom" resultType="RoomType">
+		SELECT * FROM roomtype WHERE roomTypeName NOT LIKE '标准%' AND roomTypeName NOT LIKE '豪华%'
+	</select>
+	<!-- 根据id查询房间类型 -->
+	<select id="selRoomType_ById" resultType="RoomType" parameterType="int">
+		SELECT * FROM roomtype WHERE id=#{roomTypeId}
+	</select>
+	<!-- 根据id修改房间类型 -->
+	<update id="modifyRoomType_ById" parameterType="RoomType">
+	UPDATE roomtype SET
+	roomTypeName=#{roomTypeName},
+	<if test="roomImg!=null and roomImg!=''">
+		roomImg=#{roomImg},
+	</if>
+	sketch=#{sketch},`describe`=#{describe},typePrice=#{typePrice}
+	where id=#{id}
+	</update>
+	<!-- 添加房间类型 -->
+	<insert id="addRoomType" parameterType="RoomType">
+		INSERT INTO roomtype(roomTypeName,roomImg,sketch,`describe`,typePrice)
+		VALUES(#{roomTypeName},#{roomImg},#{sketch},#{describe},#{typePrice})
+	</insert>
+	<!-- 根据id删除房间类型 -->
+	<delete id="delRoomType_ById" parameterType="int">
+		delete from roomtype where id=#{roomTypeId}
+	</delete>
+</mapper>

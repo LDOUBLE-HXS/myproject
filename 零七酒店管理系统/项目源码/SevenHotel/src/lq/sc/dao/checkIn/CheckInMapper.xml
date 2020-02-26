@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.checkIn.CheckInMapper">
+	<!-- 处理订单，办理入住 -->
+	<insert id="addCheckIn" parameterType="CheckIn">
+		INSERT INTO checkin(orderId,managerId,roomId,checkState,editOrderTime)
+		VALUES(#{orderId},#{managerId},#{roomId},1,NOW())
+	</insert>
+	<!-- 通过id查询已入住的房间 -->
+	<select id="selRoomById" resultMap="checkInList" parameterType="int">
+		SELECT *,r.id r_id,o.id o_id FROM checkin c INNER JOIN room r
+		ON c.roomId=r.id
+		INNER JOIN `order` o
+		ON c.`orderId`=o.`id`
+		WHERE roomId=#{roomId}
+		AND c.`checkState`=1
+	</select>
+	<resultMap type="CheckIn" id="checkInList">
+		<id column="id" property="id"/>
+		<association property="room" resultMap="roomList"/>
+		<association property="order" resultMap="orderList"/>
+	</resultMap>
+	<resultMap type="Room" id="roomList">
+		<id property="id" column="id"/>
+		<result property="roomCode" column="roomCode"/>
+		<result property="roomFloor" column="roomFloor"/>
+		<result property="roomState" column="roomState"/>
+		<result property="roomTypeId" column="roomTypeId"/>
+		<association property="roomtype" resultMap="roomTypeList"/>
+	</resultMap>
+	<resultMap type="RoomType" id="roomTypeList">
+		<id property="id" column="t_id"/>
+		<result property="roomTypeName" column="roomTypeName"/>
+		<result property="roomImg" column="roomImg"/>
+		<result property="sketch" column="sketch"/>
+		<result property="describe" column="describe"/>
+		<result property="typePrice" column="typePrice"/>
+	</resultMap>
+	<resultMap type="Order" id="orderList">
+		<id property="id" column="o_id"/>
+		<result property="roomTypeId" column="roomTypeId"/>
+		<result property="userId" column="userId"/>
+		<result property="checkInTime" column="checkInTime"/>
+		<result property="checkOutTime" column="checkOutTime"/>
+		<result property="orderTime" column="orderTime"/>
+		<result property="orderRoomNum" column="orderRoomNum"/>
+		<result property="orderDesc" column="orderDesc"/>
+		<result property="orderState" column="orderState"/>
+		<result property="settlement" column="settlement"/>
+		<result property="orderTime" column="orderTime"/>
+	</resultMap>
+	<!-- 根据id更改入住状态 -->
+	<update id="modifyCheckStateById">
+		UPDATE checkin SET checkState=#{checkState} where id=#{checkId}
+	</update>
+	<!-- 根据用户id查询入住信息 -->
+	<select id="selCheckInByCustomerId" resultMap="checkInList">
+		SELECT *,r.id r_id,o.id o_id,t.`id` t_id FROM checkin c INNER JOIN room r
+		ON c.roomId=r.id
+		INNER JOIN `order` o
+		ON c.`orderId`=o.`id`
+		INNER JOIN roomtype t
+		ON r.`roomTypeId`=t.`id`
+		WHERE c.`orderId` IN (SELECT id FROM `order` WHERE userId=#{customerId})
+		order by o.orderTime DESC limit #{currentPageNo},#{pageSize}
+	</select>
+	<!-- 根据用户id查询入住总条数 -->
+	<select id="selCountByCustomerId" parameterType="int" resultType="int">
+		select count(*) from checkin WHERE orderId IN (SELECT id FROM `order` WHERE userId=#{customerId})
+	</select>
+	<!-- 根据入住id删除 -->
+	<delete id="deleteCheckInById" parameterType="int">
+		delete from checkin where id=#{checkId}
+	</delete>
+	<!-- 根据订单id删除 -->
+	<delete id="deleteCheckInByOrderId" parameterType="int">
+		delete from checkin where orderId=#{orderId}
+	</delete>
+</mapper>

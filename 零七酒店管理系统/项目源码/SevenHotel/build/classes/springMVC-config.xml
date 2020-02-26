@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<context:component-scan base-package="lq.sc.controller" />
+	<mvc:annotation-driven >
+		<mvc:message-converters>
+			<bean id="stringHttpMessageConverter"
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<value>application/json;charset=utf-8</value>
+				</property>
+			</bean>
+
+			<bean id="fastJsonHttpMessageConverter"
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=utf-8</value>
+						<value>application/json;charset=utf-8</value>
+					</list>
+				</property>
+				<property name="features">
+					<list>
+						<value>
+							WriteDateUseDateFormat
+						</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<mvc:resources location="/static/" mapping="/static/**"></mvc:resources>
+	<!-- 导入layui组件 -->
+	<mvc:resources location="/layui/" mapping="/layui/**"></mvc:resources>
+	
+	<bean id="contentNegotiatingViewResolver"
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="favorParameter" value="true"></property>
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html;charset=utf-8"></entry>
+				<entry key="json" value="application/json;charset=utf-8"></entry>
+				<entry key="xml" value="application/xml;charset=utf-8"></entry>
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<bean
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<property name="prefix" value="/WEB-INF/jsp/" />
+				<property name="suffix" value=".jsp" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.RuntimeException">error</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置上传文件解析器 -->
+	<bean name="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="512000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+	<!-- 拦截管理端 -->
+	  <mvc:interceptor>
+	  	<mvc:mapping path="/manager/**"/>
+	  	<!-- 设置不拦截的页面 -->
+        <mvc:exclude-mapping path="/manager/login"/>
+        <mvc:exclude-mapping path="/manager/doLogin"/>
+        <mvc:exclude-mapping path="/manager/manCodeAjax"/>
+	    <bean class="lq.sc.interceptor.AdminInterceptor"/>
+	  </mvc:interceptor>
+	  <!-- 拦截用户端 -->
+	  <mvc:interceptor>
+	  	<mvc:mapping path="/user/**"/>
+	  	<!-- 设置不拦截的页面 -->
+        <mvc:exclude-mapping path="/user/main"/>
+        <mvc:exclude-mapping path="/user/blog"/>
+        <mvc:exclude-mapping path="/user/services"/>
+        <mvc:exclude-mapping path="/user/login"/>
+        <mvc:exclude-mapping path="/user/register"/>
+        <mvc:exclude-mapping path="/user/doLogin"/>
+        <mvc:exclude-mapping path="/user/userCodeExist"/>
+        <mvc:exclude-mapping path="/user/doRegister"/>
+	    <bean class="lq.sc.interceptor.UserInterceptor"/>
+	  </mvc:interceptor>
+	</mvc:interceptors>
+</beans>

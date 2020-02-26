@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lq.sc.dao.comment.CommentMapper">
+	<!-- 用户添加评论 -->
+	<insert id="addComment" parameterType="Comment">
+		INSERT INTO `comment`(orderId,comStar,comContext,comImg,comDate)
+		VALUES(#{orderId},#{comStar},#{comContext},#{comImg},NOW())
+	</insert>
+	<!-- 根据订单查询评论是否已有 -->
+	<select id="selCommentCount_ByOrderId" parameterType="int" resultType="int">
+		select count(*) from `comment` where orderId=#{orderId}
+	</select>
+	<!-- 根据用户id查询评论 -->
+	<select id="selComment_ByCustomerId" parameterType="int" resultMap="commentList">
+	SELECT *,o.id o_id,r.`id` r_id FROM `comment` c
+	INNER JOIN `order` o
+	ON c.`orderId`=o.`id`
+	INNER JOIN `roomtype` r
+	ON o.`roomTypeId`=r.`id`
+	WHERE orderId IN(SELECT id FROM `order` WHERE userId=#{customerId})
+	</select>
+	<resultMap type="Comment" id="commentList">
+		<id column="id" property="id"/>
+		<association property="order" resultMap="orderList"/>
+	</resultMap>
+	<resultMap type="Order" id="orderList">
+		<id property="id" column="o_id"/>
+		<result property="roomTypeId" column="roomTypeId"/>
+		<result property="userId" column="userId"/>
+		<result property="checkInTime" column="checkInTime"/>
+		<result property="checkOutTime" column="checkOutTime"/>
+		<result property="orderTime" column="orderTime"/>
+		<result property="orderRoomNum" column="orderRoomNum"/>
+		<result property="orderDesc" column="orderDesc"/>
+		<result property="orderState" column="orderState"/>
+		<result property="settlement" column="settlement"/>
+		<result property="orderTime" column="orderTime"/>
+		<association property="roomtype" resultMap="roomTypeList"/>
+		<association property="customer" resultMap="customerList"/>
+	</resultMap>
+	<resultMap type="Customer" id="customerList">
+		<id property="id" column="c_id"></id>
+		<result property="userCode" column="userCode" />
+		<result property="userName" column="userName" />
+		<result property="userPassword" column="userPassword" />
+		<result property="userPhone" column="userPhone" />
+		<result property="userCard" column="userCard" />
+	</resultMap>
+	<resultMap type="RoomType" id="roomTypeList">
+		<id property="id" column="r_id"/>
+		<result property="roomTypeName" column="roomTypeName"/>
+		<result property="roomImg" column="roomImg"/>
+		<result property="sketch" column="sketch"/>
+		<result property="describe" column="describe"/>
+		<result property="typePrice" column="typePrice"/>
+	</resultMap>
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM `comment` WHERE id=#{commentId} 
+	</delete>
+	<!-- 查询所有评论 -->
+	<select id="selAllComment" resultMap="commentList">
+		SELECT *,o.id o_id,r.`id` r_id FROM `comment` c
+	INNER JOIN `order` o
+	ON c.`orderId`=o.`id`
+	INNER JOIN `roomtype` r
+	ON o.`roomTypeId`=r.`id`
+	INNER JOIN customer u
+	ON o.`userId`=u.`id`
+	</select>
+	<!-- 根据评论id查询评论 -->
+	<select id="selComment_ById" parameterType="int" resultType="Comment">
+		select * from `comment` where id=#{id}
+	</select>
+</mapper>
